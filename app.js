@@ -8,8 +8,9 @@ var instrinct = 19;
 // variable nature in javascript
 
 // let 
-console.log(module);
+// console.log(module);
 const model = require("./model");
+const path = require('path');
 // import "model.js";   // ES6 -> ECMA script 6 -> 2015 version
 instrinct = "string!!"
 function hello(name){
@@ -38,6 +39,27 @@ model.message("testcase");
 
     // 1st thread operation result -> | 1 , 2, 3,event queue |
 
+var directory = path.parse('app.js')
+console.log(directory)
+
+const s = require('os');
+console.log(s.freemem());
+console.log(s.totalmem());
+
+/*
+    program -> state change -> output 
+    program -> state same ->  return
+*/
 
 
 
+/*
+    a = 23
+    console.log ("var " + a);
+                     ^
+    string value
+    print value using coerce -> 
+*/
+
+
+console.log(`line of code ${s.freemem()}`); // ES6

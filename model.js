@@ -1,6 +1,6 @@
 function message(message){
     console.log(message);
-    console.log(module);
+    // console.log(module);
 }
 
 module.exports.message = message;
