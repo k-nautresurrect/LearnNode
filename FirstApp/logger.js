@@ -12,5 +12,6 @@ function log(message){
 }
 
 module.exports.message = log;
+// an empty object of name message is exported with log functionality.
 
 /*  export const message  = log;  */   // ES6  

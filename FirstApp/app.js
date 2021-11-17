@@ -19,3 +19,14 @@ console.log(global.message)
 // because message scope is till this app.js file only
 
 console.log(module);
+
+// Loading module from other file
+/*  
+    import log from './logger';
+       Warning: To load an ES module, set "type": "module" 
+       in the package.json or use the .mjs extension.
+*/  // ES6
+
+const log = require('./logger')
+
+log.message('Hello World!')
