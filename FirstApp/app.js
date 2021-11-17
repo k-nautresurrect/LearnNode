@@ -18,3 +18,4 @@ console.log(global.message)
 // It prints global object message which is undefined 
 // because message scope is till this app.js file only
 
+console.log(module);
