@@ -7,4 +7,14 @@
 console.log("Hello World!");
 
 // In nodejs window and document doesn't exist
-console.log(window);
+/*
+    console.log(window);
+*/
+// however there is a global object instead of window
+
+global.console.log(global);
+var message = 'Hello World';
+console.log(global.message)
+// It prints global object message which is undefined 
+// because message scope is till this app.js file only
+
