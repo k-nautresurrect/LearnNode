@@ -37,6 +37,16 @@ const path = require('path')
 
 var pathObj = path.parse(__dirname);
 var objPath = path.parse(__filename);
+
 console.log(pathObj);
 console.log(objPath);
 console.log(path);
+
+const Os = require('os');
+
+var total = Os.totalmem();
+var free = Os.freemem();
+
+console.log(`Total memory ${total}`);
+console.log(`free memory: ${free}`);
+console.log(Os);
