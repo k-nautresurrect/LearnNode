@@ -42,6 +42,8 @@ console.log(pathObj);
 console.log(objPath);
 console.log(path);
 
+// OS module 
+
 const Os = require('os');
 
 var total = Os.totalmem();
@@ -50,3 +52,17 @@ var free = Os.freemem();
 console.log(`Total memory ${total}`);
 console.log(`free memory: ${free}`);
 console.log(Os);
+
+// fs module
+
+const fs = require('fs');
+
+var file = fs.readdirSync('./');
+console.log(file);
+var files = fs.readdir('./', function(err,files){
+    if(err){ console.log(err) }
+    else{ console.log(files) }
+})
+
+// the variable file will have the return type of fs.readdir
+console.log("files " + files);
