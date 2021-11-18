@@ -30,3 +30,13 @@ console.log(module);
 const log = require('./logger')
 
 log.message('Hello World!')
+
+// Path module.
+
+const path = require('path')
+
+var pathObj = path.parse(__dirname);
+var objPath = path.parse(__filename);
+console.log(pathObj);
+console.log(objPath);
+console.log(path);
