@@ -104,3 +104,5 @@ transfer.on('TransferSignal', (arg)=>{
 })
 
 transfer.log('this.message');
+
+// why whole module is executed when i exports class.
