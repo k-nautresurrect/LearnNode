@@ -81,3 +81,17 @@ emitter.on('Message Loaded.', function(){  // the event name should be same.
 // Raise an event 
 emitter.emit('Message Loaded.');
 // emit  ->  signaling that the event is happened
+
+
+// registering a listner
+emitter.on('messagelogged',function(arg){
+
+    // console.log('listner' + arg)   why gives [ object object ]
+
+    console.log('listner ')
+    console.log(arg)
+})
+
+// Event arguments 
+// can be send by
+emitter.emit('messagelogged', {id: 1, url: 'http://'})

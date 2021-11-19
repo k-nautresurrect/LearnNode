@@ -29,3 +29,13 @@ console.log(exports);
 console.log(module)
 console.log(__dirname);
 console.log(__filename);
+
+const EventEmitter = require('events');
+
+const logemitter = new EventEmitter();
+ 
+logemitter.on('logging',(data) => {
+    console.log(data);
+})
+
+logemitter.emit('logging',{ message: 'Logger is logged via event emitter'})
