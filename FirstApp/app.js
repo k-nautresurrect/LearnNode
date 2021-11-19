@@ -106,3 +106,34 @@ transfer.on('TransferSignal', (arg)=>{
 transfer.log('this.message');
 
 // why whole module is executed when i exports class.
+
+// http module.
+
+const http = require('http');
+
+const server = http.createServer((req,res) => {
+    // we can work with request or object rather then socket
+    // what is req and res.
+    if(req.url == '/' ){
+        res.write('Hello World!');  // what do write do.
+        res.end();
+    }
+
+    if(req.url == '/logs'){
+        res.write(JSON.stringify([message,'<',1,2,3]));
+        res.end();
+    }
+});
+
+/*
+// registering the listner
+server.on('connection', (socket) => { // predeifned name connection
+    // what is socket.
+    console.log("NewConnection")
+})
+*/
+
+// everytime the new connection or request
+server.listen(12345);
+
+console.log('Listnening on 12345 ...')
