@@ -26,11 +26,11 @@ console.log(module);
        Warning: To load an ES module, set "type": "module" 
        in the package.json or use the .mjs extension.
 */  // ES6
-
+/*
 const log = require('./logger')
 
 log.message('Hello World!')
-
+*/
 // Path module.
 
 const path = require('path')
@@ -95,3 +95,12 @@ emitter.on('messagelogged',function(arg){
 // Event arguments 
 // can be send by
 emitter.emit('messagelogged', {id: 1, url: 'http://'})
+
+const Transfer = require('./logger');
+const transfer = new Transfer();
+
+transfer.on('TransferSignal', (arg)=>{
+    console.log('Transfer Listner called', arg);
+})
+
+transfer.log('this.message');

@@ -39,3 +39,17 @@ logemitter.on('logging',(data) => {
 })
 
 logemitter.emit('logging',{ message: 'Logger is logged via event emitter'})
+
+// as event emitter can be confusing when used across all files
+// so we extends one class to this class and can have functionality
+// of the class on that particular object
+
+class Transfer extends EventEmitter{
+    // function in  class is methods so we won't have to write function keyword
+    log(message){
+        console.log(message)
+        this.emit('TransferSignal', { id: 2, message: 'hello World!'});
+    }
+}
+
+module.exports = Transfer; 
