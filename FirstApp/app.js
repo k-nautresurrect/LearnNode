@@ -66,3 +66,18 @@ var files = fs.readdir('./', function(err,files){
 
 // the variable file will have the return type of fs.readdir
 console.log("files " + files);
+
+// Event Module
+// EventEmitter class.
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+
+// register a listner
+emitter.on('Message Loaded.', function(){  // the event name should be same.
+    console.log('Listner called.');
+})
+
+// Raise an event 
+emitter.emit('Message Loaded.');
+// emit  ->  signaling that the event is happened
