@@ -42,3 +42,21 @@ app.listen(port, () => {
   to reset the port 
     unset PORT
 */
+
+// Route Parameters
+app.get('/api/courses/:id',(req,res)=>{
+    res.send(req.params.id);
+})
+
+app.get('/api/params',(req,res)=>{
+    res.send(req.params);       // a null object as nothing is passed
+})
+
+app.get('/api/params/:id/:customer',(req,res)=>{
+    res.send( req.query);
+    // res.send(req.query);
+})
+
+// app.get('/api/params/:id/:customer',(req,res)=>{
+//     res.send(req.query);
+// })
