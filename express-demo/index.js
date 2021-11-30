@@ -1,5 +1,12 @@
 const express = require('express');
 const app = express();
+const courses = [
+    {id: 1, name: "courses"},
+    {id: 2, name: "course2"},
+    {id: 3, name: "course3"}
+];
+
+app.use(express.json());
 
 app.get('/', (req,res) => {
     res.send('HEllo World!')
@@ -48,14 +55,25 @@ app.get('/api/courses/:id',(req,res)=>{
     res.send(req.params.id);
 })
 
-app.get('/api/params',(req,res)=>{
-    res.send(req.params);       // a null object as nothing is passed
+app.get('/api/params/:year/:date',(req,res)=>{
+    //res.send(req.query);       // a null object as nothing is passed
+    res.send(req.params);
 })
 
-app.get('/api/params/:id/:customer',(req,res)=>{
-    res.send( req.query);
-    // res.send(req.query);
+app.get('/api/find/courses/:id',(req,res)=>{
+    const course = courses.find(c => c.id === parseInt(req.params.id));
+    if(!course) res.status(404).send('the course for given id was not found');
+    res.send(course);
 })
+
+app.post('/api/courses',(req,res) => {
+    const course = {
+        id: courses.length + 1,
+        name: req.body.name
+    }
+    courses.push(course);
+    res.send(course);
+});
 
 // app.get('/api/params/:id/:customer',(req,res)=>{
 //     res.send(req.query);
