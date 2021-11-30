@@ -85,6 +85,7 @@ app.post('/api/courses',(req,res) => {
      */
     if(result.error){
         res.status(400).send(result.error.details[0].message);
+        return;
     }
 
     const course = {
@@ -98,3 +99,26 @@ app.post('/api/courses',(req,res) => {
 // app.get('/api/params/:id/:customer',(req,res)=>{
 //     res.send(req.query);
 // })
+
+// updating resources
+app.put('api/courses/:id',(req,res) => {
+    // Look up the course
+    // If not existing, return 404
+    const course = courses.find( c => c.id === parseInt(req.params.id));
+    if(!course) res.status(404).send("course doesn't exist");
+
+    // Validation
+    const schema = {
+        name: Joi.string().min(3).required()
+    }
+    const result = Joi.valid(req.body, schema);
+    if(result.error){
+        res.send(400).send(result.error.details[0].message);
+        return;
+    }
+
+    // updating course
+    course.name = req.body.name;
+    res.send(course);
+
+})
