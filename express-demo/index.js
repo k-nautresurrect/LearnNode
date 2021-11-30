@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const express = require('express');
 const app = express();
 const courses = [
@@ -39,7 +40,7 @@ app.listen(port, () => {
 
 /*
   we can list all the environment variable or paths by
-  export -p
+    export -p
   here as i have made an env variable port so,
     declare -x PWD="/home/kaynaut/Desktop/LearnNode/express-demo"
   this line is there for providing a path to this directory
@@ -67,6 +68,25 @@ app.get('/api/find/courses/:id',(req,res)=>{
 })
 
 app.post('/api/courses',(req,res) => {
+    // with joi we have to define a schema
+    const schema = {
+        name: Joi.string().min(3).require()
+    }
+
+    const result = Joi.valid(req.body, schema);
+    // console.log(res);
+    /**
+     * it returns {
+     *  error:
+     *  value:
+     *  then:
+     *  catch:
+     * }
+     */
+    if(result.error){
+        res.status(400).send(result.error.details[0].message);
+    }
+
     const course = {
         id: courses.length + 1,
         name: req.body.name
