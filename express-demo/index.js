@@ -9,6 +9,8 @@ const courses = [
 
 app.use(express.json());
 
+
+
 app.get('/', (req,res) => {
     res.send('HEllo World!')
 });
