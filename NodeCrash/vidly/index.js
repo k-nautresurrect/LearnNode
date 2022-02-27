@@ -1,3 +1,4 @@
+const Joi = require("joi");
 const express = require("express");
 const app = express();
 app.use(express.json());
@@ -13,17 +14,25 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/genre", (req, res) => {
-  res.send(genre.map((value) => value.title));
+  res.send(`<h1>${genre.map((value) => value.title)}</h1>`);
 });
 
 app.get("/api/genre/:name", (req, res) => {
   const name = req.params.name;
+
   const movie = genre.find((value) => value.title === name);
+
   if (!movie) res.status(404).send("error");
-  res.send(movie.name);
+  res.send(`<h1>${movie.name}</h1>`);
 });
 
-app.post("/api/movie/:name", (req, res) => {
+app.post("/api/movie", (req, res) => {
+  const schema = {
+    name: Joi.string().min(5).required(),
+  };
+
+  const result = Joi.validate(req.body, schema);
+  console.log(result);
   const moviename = req.body.name;
   res.send(moviename);
 });
